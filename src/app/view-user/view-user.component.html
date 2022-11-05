@@ -1,0 +1,85 @@
+<div class="loginCover">
+  <!-- Email input -->
+  <h4 class="text-uppercase text-center mb-5">Profile Details</h4>
+  <div>
+    <div class="proFileImage">
+      <img [src]="profileImg" alt="">
+    </div>
+  </div>
+  <table *ngFor=" let user of userDetailsArray " style="width: 100%;">
+    <tr>
+      <td class="userLable"> User Name</td>
+      <td>: {{user.userName}}</td>
+    </tr>
+    <tr>
+      <td class="userLable"> Name</td>
+      <td>: {{user.name}}</td>
+    </tr>
+    <tr>
+      <td class="userLable"> Email</td>
+      <td>: {{user.email}}</td>
+    </tr>
+    <tr>
+      <td class="userLable"> Gender</td>
+      <td>: {{user.gender}}</td>
+    </tr>
+    <tr>
+      <td class="userLable"> Education</td>
+      <td>: {{user.education}}</td>
+    </tr>
+    <tr>
+      <td class="userLable"> Hobbies</td>
+      <td>: <span *ngFor="let hobbies of user.hobbies"> {{hobbies}}, </span> </td>
+    </tr>
+  </table>
+  <div>
+    <div class="userLable"> Total User Count <span> - {{count}} </span></div>
+  </div>
+  <!-- Button trigger modal -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <a (click)="signOut()" href="#!">Sign Out?</a>
+    </div>
+    <div class="col">
+      <!-- Simple link -->
+      <a data-bs-toggle="modal" class="navClass" data-bs-target="#exampleModal" href="#!">Reset password?</a>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Reset Password </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Old Password</label>
+            <input type="password" id="form2Example2" class="form-control" [(ngModel)]="oldPass" />
+          </div>
+          <div class="form-outline mb-4 elementsCover">
+            <label class="form-label" for="form2Example2">New Password</label>
+            <input type="password" id="form2Example2" [(ngModel)]="password" (keyup)="checkValidation('pass')"
+              class="form-control" />
+            <img
+              [src]="passFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+              class="validationImg" id="passImg" alt="">
+          </div>
+          <div class="form-outline mb-4 elementsCover">
+            <label class="form-label" for="form2Example2">Confirm Password</label>
+            <input type="password" id="form2Example2" class="form-control" [(ngModel)]="repeatPass"
+              (keyup)="checkValidation('rePass')" />
+            <img
+              [src]="rePassFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+              class="validationImg" id="rePassImg" alt="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)=" changePassword() ">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

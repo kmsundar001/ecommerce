@@ -1,0 +1,47 @@
+<div class="bodyCover">
+    <div class="contanier">
+        <section class="vh-100">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5"> {{title}} Product </h2>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" class="form-control" [(ngModel)]="productName"
+                                            [disabled]="viewFlag" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Price</label>
+                                        <input type="text" class="form-control" [(ngModel)]="productPrice"
+                                            [disabled]="viewFlag" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Description</label>
+                                        <input type="text" class="form-control" [(ngModel)]="productDescription"
+                                            [disabled]="viewFlag" />
+                                    </div>
+                                    <div class="form-outline mb-4" class="elementsCover" *ngIf="!viewFlag">
+                                        <label class="form-label">Upload Proflie Pic</label>
+                                        <input type="file" class="form-control" [(ngModel)]="productPic"
+                                            (change)="chooseImg($event)" />
+                                    </div>
+                                    <div style="text-align: center;" *ngIf="editFlag || viewFlag">
+                                        <img [src]="image" class="productImg" id="productImg" alt="">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                                            style="color: #fff !important;" (click)="addProduct()"> Submit </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

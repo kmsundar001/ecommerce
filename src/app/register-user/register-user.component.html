@@ -1,0 +1,90 @@
+<section class="vh-100">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">{{title}}</h2>
+              <div class="form-outline mb-4">
+                <div *ngIf="editFlag">
+                  <div class="proFileImage">
+                    <img [src]="profilePic" alt="">
+                  </div>
+                </div>
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" [(ngModel)]="name" />
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label">User Name</label>
+                <input type="text" class="form-control" [(ngModel)]="userName" (keyup)="checkValidation('userName')" />
+                <img
+                  [src]="usernameFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+                  class="validationImg" id="passImg" alt="">
+                <span style="color: #00000059;"> *Unique </span>
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label">Your Email</label>
+                <input type="email" class="form-control" [(ngModel)]="email" (keyup)="checkValidation('email')" />
+                <img
+                  [src]="emailFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+                  class="validationImg" id="emailImg" alt="">
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" [(ngModel)]="password" (keyup)="checkValidation('pass')" />
+                <img
+                  [src]="passFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+                  class="validationImg" id="passImg" alt="">
+                <span style="color: #00000059;"> Must contain atleat one *caps, *special character, *numeric </span>
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label">Repeat your password</label>
+                <input type="password" class="form-control" [(ngModel)]="repeatPass"
+                  (keyup)="checkValidation('rePass')" />
+                <img
+                  src="https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png"
+                  [src]="rePassFlag ? 'https://spng.pngfind.com/pngs/s/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png' : 'https://image.similarpng.com/very-thumbnail/2021/06/Cross-mark-icon-in-red-color-on-transparent-background-PNG.png'"
+                  class="validationImg" id="rePassImg" alt="">
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label">Upload Proflie Pic</label>
+                <input type="file" class="form-control" [(ngModel)]="profilePic" (change)="chooseImg($event)" />
+              </div>
+              <div class="form-outline mb-4" class="elementsCover">
+                <label class="form-label" style="padding-right: 10px;">Gender</label>
+                <input type="radio" value="male" name="gender" [(ngModel)]="gender"> Male
+                <input type="radio" value="female" name="gender" [(ngModel)]="gender"> Female
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label">Education</label>
+                <select class="form-select" [(ngModel)]="education" aria-label="Default select example">
+                  <option value="Masters" selected>Masters</option>
+                  <option value="Graduation">Graduation</option>
+                  <option value="Diploma">Diploma</option>
+                </select>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label">Hobbies</label>
+                <div class="row">
+                  <div class="col-6" *ngFor="let hobbies of hobbiesArray">
+                    <input class="form-check-input" type="checkbox" [value]="hobbies.name" [(ngModel)]="hobbies.checked"
+                      [id]="hobbies.name">
+                    <label class="form-check-label" [for]="hobbies.name"> <span
+                        style="padding-left: 10px;">{{hobbies.name}}</span> </label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                  style="color: #fff !important;" (click)="addUser()">{{submitLable}}</button>
+              </div>
+              <p *ngIf="!editFlag" class="text-center text-muted mt-5 mb-0">Have already an account? <a class="navClass"
+                  (click)="login()"><u>Login here</u></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

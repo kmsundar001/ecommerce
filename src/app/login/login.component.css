@@ -1,0 +1,21 @@
+.loginCover {
+    width: 42%;
+    margin: 50px auto;
+    height: 252px;
+    padding: 8px 17px;
+    border: 1px solid #3ab1b7;
+    border-radius: 12px;
+}
+
+.validationImg {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 11px;
+    top: 41px;
+}
+
+.elementsCover {
+    position: relative;
+    margin: 0 0 10px 0;
+}

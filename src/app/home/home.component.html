@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark bg-primary">
+    <!-- Navbar content -->
+    <div class="container">
+        <h3 class="headerLable"> Hello {{name}}! </h3>
+    </div>
+</nav>
+<div class="bodyCover">
+    <div class="container">
+        <div style="height:50px;">
+            <button class="buttonStyle" routerLink="/login"> Sign Out </button>
+            <button class="buttonStyle" (click)="checkOut()"> check Out </button>
+            <button class="buttonStyle" routerLink="/viewuser"> View Profile </button>
+            <div style="position: relative;width: fit-content; float: right;">
+                <img class="chartStyle" (click)="gotoCart()"
+                    src="https://firebasestorage.googleapis.com/v0/b/userdetails-ebabc.appspot.com/o/test05-11-2022?alt=media&token=643e4903-ccc3-450c-a5e8-24110128cb21"
+                    alt="">
+                <div class="cartCount">{{cartCount}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2"
+                *ngFor="let product of getProductListArray">
+                <div class="card">
+                    <img [src]="product.image" class="card-img-top" alt="...">
+                    <div class="card-body productCover">
+                        <div class="productConter">
+                            <div class="productHeading">{{product.name}}</div>
+                            <div class="productDesc">{{product.description}}</div>
+                        </div>
+                        <div> &#x20b9; {{product.price | number : '1.2-2'}} </div>
+                    </div>
+                    <div class="card-footer" style="padding: 15px 8px;">
+                        <div style="display: flex;">
+                            <div class="number">
+                                <span class="minus" (click)="chanageQuanity(product,'minus')">-</span>
+                                <input type="text" value="1" class="quantityInput" [(ngModel)]="product.quantity" />
+                                <span class="plus" (click)="chanageQuanity(product,'plus')">+</span>
+                            </div>
+                            <div style="width:50%">
+                                <div class="addCart" (click)="addCart(product)">Add Cart</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2+">
+            </div>
+        </div>
+    </div>
+</div>

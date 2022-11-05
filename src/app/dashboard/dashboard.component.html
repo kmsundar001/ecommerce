@@ -1,0 +1,65 @@
+<nav class="navbar navbar-dark bg-primary">
+    <!-- Navbar content -->
+    <div class="container">
+        <h3 class="headerLable"> Admin DashBoard </h3>
+    </div>
+</nav>
+<div class="bodyCover">
+    <div class="contanier">
+        <div class="col-12" *ngIf="productListFlag">
+            <button class="buttonStyle" (click)="signOut()"> Sign Out </button>
+            <button class="buttonStyle" (click)="addProduct()"> Add Product </button>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="textCenter">
+                        <th> Si.NO </th>
+                        <th> Image </th>
+                        <th> Product Name</th>
+                        <th> Price</th>
+                        <th> Description </th>
+                        <th> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of productDetailsArray; let i = index">
+                        <td (click)="viewProduct(x)" class="textCenter"> {{ i + 1 }} </td>
+                        <td (click)="viewProduct(x)"> <img [src]="x.image" class="profileImg" alt=""> </td>
+                        <td (click)="viewProduct(x)"> {{ x.name }} </td>
+                        <td (click)="viewProduct(x)"> {{ x.price }} </td>
+                        <td (click)="viewProduct(x)"> {{ x.description }} </td>
+                        <td class="textCenter"><img (click)="editProduct(x)"
+                                src="https://flyclipart.com/thumb2/circle-compose-draw-edit-write-icon-728133.png"
+                                class="trashStyle" alt=""> <img (click)="deleteUser(x.id)"
+                                src="https://icon-library.com/images/delete-icon/delete-icon-14.jpg" class="trashStyle"
+                                alt="" data-bs-toggle="modal" data-bs-target="#exampleModal"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="addProductsFlag">
+            <app-add-product (getproduct)="saveProduct($event)"></app-add-product>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    #forgotModel>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> </h5>Delete Product
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form2Example2">Ypu really want to delete the product</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="confirmDelete('no')">No</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="confirmDelete('yes')">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
