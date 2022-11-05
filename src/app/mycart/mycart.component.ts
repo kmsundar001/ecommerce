@@ -23,6 +23,7 @@ export class MycartComponent implements OnInit {
         obj.splice(index, 1);
       }
     });
+    this.totalAmount = this.getUserDetails.product.reduce((temp: any, x: any) => { return (temp + parseFloat(x.amount)) }, 0)
   }
   checkOut() {
     localStorage.removeItem("getUser");
